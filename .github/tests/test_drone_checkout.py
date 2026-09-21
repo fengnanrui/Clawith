@@ -46,7 +46,7 @@ class DroneCheckoutTests(unittest.TestCase):
     def event_checkout(self, ref, commit):
         return subprocess.run(
             ["sh", "-ec", self.commands], cwd=self.checkout,
-            env={**os.environ, "DRONE_REF": ref, "DRONE_COMMIT": commit},
+            env={**os.environ, "DRONE_COMMIT_REF": ref, "DRONE_COMMIT": commit},
             capture_output=True, text=True,
         )
 

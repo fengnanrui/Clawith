@@ -2,8 +2,9 @@
 
 The `clone` step in `drone.yml` owns the checkout used by image, migration,
 deployment and upgrade checks. It must materialize the exact `DRONE_COMMIT`
-from the event's `DRONE_REF`, including fork-only `refs/pull/*/head` commits.
+from the event's `DRONE_COMMIT_REF`, including fork-only `refs/pull/*/head` commits.
 Cloning upstream branches and tags alone does not fetch those pull refs.
+The variable is defined by [Drone's environment contract](https://docs.drone.io/pipeline/environment/reference/drone-commit-ref/).
 
 Fetch the event ref before checkout. A missing ref or commit fails the clone
 step; do not silently test a branch tip instead. Keep full history and tags for
